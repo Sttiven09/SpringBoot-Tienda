@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmls:th="https://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Tienda BrezzyVibez</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <div>
+            <h1>Productos</h1>
+        </div>
+        <br>
+        <br>
+        <div>
+            <a th:href="@{/new}" class="btn btn-primary"> Nuevo Producto </a>
+        </div>
+        <br>
+        <br>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto:${productos}">
+                        <td th:text="${producto.nombre}"></td>
+                        <td th:text="${producto.descripcion}"></td>
+                        <td th:text="${producto.cantidad}"></td>
+                        <td th:text="${producto.precio}"></td>
+                        <td text="Acciones">
+                            <a th:href="@{/editar/}+${producto.id}" class="btn btn-warning" >Editar</a>
+                            <a th:href="@{/eliminar/}+${producto.id}" class="btn btn-danger" >Eliminar</a>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        
+    
+    </div>
+
+</body>
+</html>
